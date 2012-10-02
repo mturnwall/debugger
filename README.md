@@ -31,6 +31,12 @@ update by the ajax call are included in the ajax json as a hash table along with
 
 Usage
 -----
+
+The default state for the debugger is off. There are two ways to turn the debugger on.
+
+1. Set the debug.on property to *true*. The default is *false*, `debug.on = true;`
+2. Add a query string to the URL of debug=true, http://example.com?debug=true
+
 **Basic**
 
 `debug.log('This is a log message');`
