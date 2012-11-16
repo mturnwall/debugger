@@ -21,6 +21,7 @@
 window.debug = (function() {
 	var debug = {},
 		id,
+		message,
 		types = ['log','info','warn','error', 'debug', 'dir', 'group', 'groupEnd'];
 
 	/**
@@ -56,7 +57,13 @@ window.debug = (function() {
 			debug[type] = function() {
 			if (debug.on && typeof console !== 'undefined') {
 				debug.history.push(arguments);
-				console[type].apply(console, arguments);
+				if (console[type].apply) {
+					console[type].apply(console, arguments);
+				} else {
+					// console is native in IE so appl method won't work because it's not an object
+					message = Array.prototype.slice.apply(arguments).join(' ');
+					console[type](message);
+				}
 			}
 		};
 		})(types[id]);

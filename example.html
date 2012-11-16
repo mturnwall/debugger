@@ -2,7 +2,7 @@
 <head>
 	<title>Debug Object Example Page</title>
 	<meta charset="utf-8">
-	<script src="debug.min.js" type="text/javascript"></script>
+	<script src="debug.js" type="text/javascript"></script>
 	<script type="text/javascript">
 			var animal = 'dog',
 				count = 1;
@@ -11,6 +11,7 @@
 			debug.log("The %s jumped over %d tall buildings", animal, count);
 			debug.debug('example.html - line 10: There was a problem');
 			debug.warn('watch your step!');
+			debug.error('OMG, things are blowing up!');
 			debug.groupEnd();
 	</script>
 </head>	
