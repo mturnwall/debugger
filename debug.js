@@ -16,7 +16,7 @@
  *	String Substituion
  *	debug.log("The %s jumped over %d tall buildings", animal, count);
  *
- *	@version 0.2
+ *	@version 0.2.1
  */
 window.debug = (function() {
 	var debug = {},
@@ -60,7 +60,7 @@ window.debug = (function() {
 				if (console[type].apply) {
 					console[type].apply(console, arguments);
 				} else {
-					// console is native in IE so appl method won't work because it's not an object
+					// console is native in IE so apply method won't work because it's not an object
 					message = Array.prototype.slice.apply(arguments).join(' ');
 					console[type](message);
 				}
