@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+<title>debugger by Michael Turnwall</title>
+
+<link rel="stylesheet" href="css/styles.css">
+<!-- <link rel="stylesheet" href="css/pygment_trac.css"> -->
+<link rel="stylesheet" href="highlighter/tomorrow.css">
+
+<script src="highlighter/prettify.js"></script>
+<script>
+    if (window.addEventListener) {
+         window.addEventListener('load', prettyPrint);
+    } else if (window.attachEvent)  {
+        window.attachEvent('load', prettyPrint);
+    }
+</script>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+            <h1>Debugger</h1>
+            <p class="view"><a href="https://github.com/mturnwall/debugger">View the Project on GitHub</a><br><small>(https://github.com/mturnwall/debugger)</small></p>
+            <ul>
+                <li><a href="https://github.com/mturnwall/debugger/zipball/master">Download <strong>ZIP File</strong></a></li>
+                <li><a href="https://github.com/mturnwall/debugger/tarball/master">Download <strong>TAR Ball</strong></a></li>
+                <!-- <li><a href="https://github.com/mturnwall/debugger">View On <strong>GitHub</strong></a></li> -->
+            </ul>
+        </header>
+        <section>
+        	<h2>Description</h2>
+        	<p>A simple debugger for web sites using the browser's console. Based on the console wrapper from Paul Irish.</p>
+        	<p>A <a href="demo">demo page</a> is provided so you can see the code in action.</p>
+        </section>
+        <section>
+        	<h2>Usage &amp; Features</h2>
+        	<p>The default state for the debugger is off. There are two ways to turn the debugger on.</p>
+        	<ol>
+        		<li>Set the <code>debug.on</code> property to *true*, <code class="prettyprint">debug.on = true;</code>. The default is *false*.</li>
+        		<li>Add a query string to the URL of debug=true, http://example.com?debug=true</li>
+        	</ol>
+        	<h3>Basic Usage</h3>
+        	<p>You use this debugger just as you would the normal browser <code>console.log()</code> except you replace &#8220;console&#8221; with &#8220;debug&#8221;.</p>
+        	<pre class="prettyprint lang-js">debug.log('This is a log message');</pre>
+        	<h3>String Substitution</h3>
+        	<p>Just like with the normal console you can use string substitution</p>
+			<pre class="prettyprint">var animal = 'cow',
+    count = 10;
+debug.log("The %s jumped over %d tall buildings", animal, count);</pre>
+			<p>The above code will output to the console as &#8220;The cat jumped over 10 buildings&#8221;</p>
+			<h3>Debug History</h3>
+			<p>All calls to the debug object will be saved in <code>debug.history</code> which is an array of all the messages sent to the debug object.</p>
+			<pre class="prettyprint">var animal = 'dog',
+    count = 1;
+debug.on = true;
+debug.log('The %s jumped over %d tall buildings', animal, count);
+debug.debug('example.html - line 10: There was a problem');
+debug.warn('watch your step!');
+debug.error('OMG, things are blowing up!');
+/*
+    debug.history[0] outputs ['The %s jumped over %d tall buildings', animal, count]
+    ...
+    debug.history[3] outputs ['OMG, things are blowing up!']    
+ */</pre>
+			<h3>Supported Console Types</h3>
+			<p>Here is a list of the current supported console message types:</p>
+			<pre class="prettyprint">log, info, warn, error, debug, dir, group, groupEnd</pre>
+        </section>
+
+
+        <section>
+            <h2>Copyright &amp; License</h2>
+            <!-- <p>Copyright (c) 2013 Michael Turnwall</p> -->
+
+            <p>This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+
+            <p>This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.</p>
+
+            <p>You should have received a copy of the GNU General Public License along with this program. If not, see <a href="http://www.gnu.org/licenses/gpl-3.0.html">&lt;http://www.gnu.org/licenses/gpl-3.0.html&gt;</a>.</p>
+        </section>
+
+        <footer>
+        	<p>This project is maintained by <a href="https://github.com/mturnwall">mturnwall</a></p>
+        	<p class="copyright">Copyright &#169; 2012 Michael Turnwall.<br><a href="http://www.gnu.org/licenses/gpl-3.0.html" title="GNU GENERAL PUBLIC LICENSE version 3">Some Rights Reserved</a>.</p>
+       		<p><small>Hosted on GitHub Pages &mdash; Theme based on one by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+	    </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+</body>
+</html>
